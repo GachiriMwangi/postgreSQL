@@ -1,0 +1,14 @@
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,  
+    firstname VARCHAR(50) NOT NULL, 
+    lastname VARCHAR(50) NOT NULL,  
+    email VARCHAR(100) UNIQUE NOT NULL, 
+    password VARCHAR(255) NOT NULL   
+);
+
+INSERT INTO users (firstname, lastname, email, password) 
+VALUES('John', 'Doe', 'john.doe@example.com', 'hashed_password_1'),
+('Jane', 'Smith', 'jane.smith@example.com', 'hashed_password_2'),
+('Alice', 'Johnson', 'alice.johnson@example.com', 'hashed_password_3'),
+('Bob', 'Brown', 'bob.brown@example.com', 'hashed_password_4'),
+('Charlie', 'Davis', 'charlie.davis@example.com', 'hashed_password_5');

@@ -8,6 +8,25 @@ router.get("/", (req, res) => {
   });
 });
 
+router.get("/api/test", async(req, res) => {
+  try{
+ const result = await req.pool.query('SELECT NOW()')
+ res.status(200).json({
+  success: true, 
+      message: "Current Time", 
+      data: result.rows
+ })
+  }
+  catch(error){
+    res.status(500).json({
+      success: false, 
+      message: "Error", 
+      error: error
+    })
+    console.log("Error: ", error)
+  }
+})
+
 router.get("/api/users", async (req, res) => {
   try {
     const result = await req.pool.query("SELECT * FROM users");

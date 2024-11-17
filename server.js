@@ -10,14 +10,20 @@ const app = express();
 app.use(express.json());
 
 // Database connection configuration
-const pool = new Pool({
-  user: process.env.user,
-  host: process.env.host,
-  database: process.env.dbname,
-  password: process.env.password,
-  port: process.env.port,
-});
+// const pool = new Pool({
+//   user: process.env.Username,
+//   host: process.env.hostname,
+//   database: process.env.database,
+//   password: process.env.password,
+//   port: process.env.port,
+// });
 
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
+});
 // Test the connection
 pool.connect((err) => {
   if (err) {
